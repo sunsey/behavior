@@ -15,6 +15,7 @@ public class SatsumaSite {
 
     @Test
     public void fillPage() {
+
         open("http://google.com");
 
 
