@@ -11,16 +11,33 @@ import static com.codeborne.selenide.Selenide.open;
 public class SatsumaSite {
 
     //-Dtest=SatsumaSite -Dbrowser=org.openqa.selenium.chrome.ChromeDriver -Dwebdriver.chrome.driver=c:\satsumabd\chromedriver.exe test
+
     //-Dtest=SatsumaSite -Dbrowser=org.openqa.selenium.htmlunit.HtmlUnitDriver test
+    // -Dtest=SatsumaSite -Dbrowser=htmlunit test
+
+
+    LoginPageHTML loginPageHTML = open("https://upland-logic-development.herokuapp.com/users/sign_in", LoginPageHTML.class);
+    //Settings.CustomWebDriverProvider customWebDriverProvider;
+
 
     @Test
-    public void fillPage() {
+    public void successLogin() {
 
-        open("http://google.com");
+        loginPageHTML.provideCorrectUsernameInCorrectPassword();
 
 
 
     }
+
+
+//    @Test
+//    public void notsuccessLogin() {
+//        loginPageHTML.FillUsername("y.karpiuk@svitla.com");
+//        loginPageHTML.FillPassword("UplandSvitla02");
+//        loginPageHTML.clickSignIn1Button();
+//
+//    }
+
 
 }
 
