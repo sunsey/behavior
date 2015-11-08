@@ -1,6 +1,5 @@
 package org.satsuma.bd;
 
-import org.apache.xpath.operations.String;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -53,15 +52,16 @@ public class LoginPageHTML {
     }
 
     private String getAlertMessage(){
-        return (String) $(By.xpath("//*[@id=\"container\"]/div/text())"));
+        return $(By.xpath("//*[@id=\"container\"]/div/text())")).toString();
 
     }
 
-    public boolean isLoginCorrect(String messageCorrectLogin) {
+    public boolean isLoginCorrect() {
 
         return this.getAlertMessage().equals(messageCorrectLogin);
-
     }
+
+
 
     public LoginPageHTML provideCorrectUsernameInCorrectPassword()
     {
