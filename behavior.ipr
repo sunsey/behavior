@@ -206,7 +206,7 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/behavior.iml" filepath="$PROJECT_DIR$/behavior.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uplandUI.iml" filepath="$PROJECT_DIR$/uplandUI.iml" />
     </modules>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_5" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" />

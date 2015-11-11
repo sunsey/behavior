@@ -1,4 +1,4 @@
-package org.satsuma.bd;
+package org.upland.bd;
 
 import com.codeborne.selenide.WebDriverProvider;
 import org.openqa.selenium.WebDriver;

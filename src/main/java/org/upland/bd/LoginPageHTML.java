@@ -1,4 +1,4 @@
-package org.satsuma.bd;
+package org.upland.bd;
 
 import org.openqa.selenium.By;
 
