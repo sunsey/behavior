@@ -1,10 +1,9 @@
 package org.upland.bd;
 
+import org.junit.Before;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.open;
-
-
 
 
 /**
@@ -12,20 +11,30 @@ import static com.codeborne.selenide.Selenide.open;
  */
 public class UplandSite {
 
-    //-Dtest=SatsumaSite -Dbrowser=org.openqa.selenium.chrome.ChromeDriver -Dwebdriver.chrome.driver=c:\satsumabd\chromedriver.exe test
-
-    //-Dtest=SatsumaSite -Dbrowser=org.openqa.selenium.htmlunit.HtmlUnitDriver test
-    // -Dtest=SatsumaSite -Dbrowser=htmlunit test
-    //-Dtest=SatsumaSite -Dbrowser=SetSettings.CustomWebDriverProvider test
-
-
-
+    //-Dtest=UplandSite -Dbrowser=org.openqa.selenium.chrome.ChromeDriver -Dwebdriver.chrome.driver=c:\satsumabd\chromedriver.exe test
+    //-Dtest=UplandSite -Dbrowser=org.openqa.selenium.htmlunit.HtmlUnitDriver test
+    //-Dtest=UplandSite -Dbrowser=htmlunit test
+    //-Dtest=UplandSite -Dbrowser=SetSettings.CustomWebDriverProvider test
 
     LoginPageHTML loginPageHTML = open("https://upland-logic-development.herokuapp.com/users/sign_in", LoginPageHTML.class);
 
-    @Test
+    @Before
+    public void setUp() throws Exception {
+
+
+    }
+
+
+
+        @Test
     public void successLogin() {
-        loginPageHTML.provideCorrectUsernameInCorrectPassword();
+            open("/login");
+
+        //loginPageHTML.provideCorrectUsernameInCorrectPassword();
+
+
+
+        //getWebDriver().findElement(By.id("username");
        // Assert.assertTrue(loginPageHTML.isLoginCorrect());
     }
 

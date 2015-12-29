@@ -21,9 +21,17 @@
         <processorPath useClasspath="true" />
         <module name="behavior" />
       </profile>
+      <profile default="false" name="Annotation profile for uplandUI" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="uplandUI" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="behavior" target="1.6" />
+      <module name="uplandUI" target="1.6" />
     </bytecodeTargetLevel>
   </component>
   <component name="CopyrightManager" default="" />
@@ -237,15 +245,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/beust/jcommander/1.27/jcommander-1.27-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: com.codeborne:selenide:2.23">
+    <library name="Maven: com.codeborne:selenide:2.25">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/codeborne/selenide/2.23/selenide-2.23.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/codeborne/selenide/2.25/selenide-2.25.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/com/codeborne/selenide/2.23/selenide-2.23-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/codeborne/selenide/2.25/selenide-2.25-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/com/codeborne/selenide/2.23/selenide-2.23-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/com/codeborne/selenide/2.25/selenide-2.25-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: com.google.code.gson:gson:2.3.1">
