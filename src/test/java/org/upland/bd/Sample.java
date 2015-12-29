@@ -133,6 +133,7 @@ public class Sample {
         $(By.className("page-title")).shouldHave(text("12341234"));
         $(By.id("logo_image")).click();
 
+
     }
 
     @Test
