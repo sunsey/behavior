@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -30,13 +31,13 @@ public class Sample {
     @BeforeClass
     public void setUp() throws Exception {
 
-       //  remote = "http://yurii16:fNrGLC3k2WYbRiuutfrZ@hub.browserstack.com/wd/hub";
-         remote = "http://localhost:4444/wd/hub";
+         remote = "http://yurii16:fNrGLC3k2WYbRiuutfrZ@hub.browserstack.com/wd/hub";
+        // remote = "http://localhost:4444/wd/hub";
         Configuration.baseUrl = "https://upland-logic-development.herokuapp.com";
         caps.setCapability("os", "Windows");
         caps.setCapability("os_version", "7");
-        caps.setCapability("browser", "firefox");
-        caps.setCapability("browser_version", "8.0");
+        caps.setCapability("browser", "chrome");
+        caps.setCapability("browser_version", "47");
         caps.setCapability("resolution", "1024x768");
         caps.setCapability("build", "Sample");
         driver = new RemoteWebDriver(new URL(remote),caps);
@@ -53,14 +54,12 @@ public class Sample {
     public void testCheckLoginOk() {
 
         $(By.className("page-title")).shouldHave(text("Organization"));
-        $(By.xpath("//*[@id=\"container\"]/div[1]")).shouldHave(text("Signed in successfully."));
-
 
     }
 
     @Test
     public void testCreateOrganizationFormAppear() {
-        $(By.xpath("//*[@id=\"container\"]/div[2]/div/div[1]/a")).click();
+        $(By.xpath("//*[@class=\"btn btn-primary\"]")).click();
         $(By.className("modal-title")).shouldHave(text("Create New Organization"));
         $(By.xpath("//*[@id=\"new_organization\"]/div[2]/div/button[1]")).click();
 
@@ -68,10 +67,11 @@ public class Sample {
 
     @Test
     public void testCreateOrganization() {
-        $(By.xpath("//*[@id=\"container\"]/div[2]/div/div[1]/a")).click();
+        $(By.xpath("//*[@class=\"btn btn-primary\"]")).click();
         $(By.id("organization_users_attributes_0_name")).setValue("autotestOrganization");
         $(By.id("organization_users_attributes_0_email")).setValue("karpyuk@gmail.com");
         $(By.xpath("//*[@id=\"new_organization\"]/div[2]/div/button[2]")).click();
+        $(By.xpath("//*[@class = \"alert alert-danger fade in\"]")).shouldNotHave("Failed to create the organization: Users password The password must contain 8 minimum characters, including letters as minimum or more and numbers.");
 
     }
 
@@ -80,7 +80,7 @@ public class Sample {
         $(By.xpath("//*[@id=\"organizations-table_paginate\"]/ul/li[7]/a")).click();
         $(By.xpath("//*[@id=\"organization_31\"]/td[1]/a")).click();
         $(By.className("page-title")).shouldHave(text("Svitla"));
-        $(By.id("logo_image")).click();
+
     }
 
     @Test
@@ -92,11 +92,10 @@ public class Sample {
         $(By.xpath("//*[@id=\"container\"]/div/a")).click();  // Portfolio Create
         $(By.className("modal-title")).shouldHave(text("Create New Portfolio"));
         $(By.xpath("//*[@id=\"new_portfolio\"]/div[2]/div/button[1]")).click();  // Click Cancel
-        $(By.id("logo_image")).click();
 
     }
 
-    @Test
+    @Test   /// fail for moment
     public void testPortfolioCreate() {
         $(By.xpath("//*[@id=\"organizations-table_paginate\"]/ul/li[7]/a")).click();
         $(By.xpath("//*[@id=\"organization_31\"]/td[1]/a")).click();
@@ -104,37 +103,17 @@ public class Sample {
         $(By.xpath("//*[@id=\"container\"]/div/a")).click();  // Portfolio Create
 
         $(By.id("portfolio_name")).setValue("autotestPortfolio");
-        $(By.id("portfolio_analytics_start_date")).setValue("12/12/2013");
+        $(By.id("portfolio_analytics_start_date")).setValue("12/132/2013");
 
         $(By.xpath("//*[@id=\"new_portfolio\"]/div[2]/div/button[2]")).click();  // Click Save
-        $(By.id("logo_image")).click();
-
-    }
-
-    @Test
-    public void testPortfolioIsCreate() {
-        $(By.xpath("//*[@id=\"organizations-table_paginate\"]/ul/li[7]/a")).click();
-        $(By.xpath("//*[@id=\"organization_31\"]/td[1]/a")).click();
-        $(By.xpath("//*[@id=\"container\"]/table/tbody/tr[1]/td[1]/a")).click();  // Portfolio
         $(By.id("container")).shouldHave(text("12341234"));
-
-        $(By.id("logo_image")).click();
-
-    }
-
-
-    @Test
-    public void testCheckAssetListAppear() {
-        $(By.xpath("//*[@id=\"organizations-table_paginate\"]/ul/li[7]/a")).click();
-        $(By.xpath("//*[@id=\"organization_31\"]/td[1]/a")).click();
-        $(By.xpath("//*[@id=\"container\"]/table/tbody/tr[1]/td[1]/a")).click();  // Portfolio
 
         $(By.xpath("/html/body/div/table/tbody/tr[2]/td[6]/a[2]")).click();  // Go to asset
         $(By.className("page-title")).shouldHave(text("12341234"));
-        $(By.id("logo_image")).click();
-
 
     }
+
+
 
     @Test
     public void testCheckCreateAssetFormAppear() {
@@ -142,12 +121,11 @@ public class Sample {
         $(By.xpath("//*[@id=\"organization_31\"]/td[1]/a")).click();
         $(By.xpath("//*[@id=\"container\"]/table/tbody/tr[1]/td[1]/a")).click();  // Portfolio
 
-        $(By.xpath("/html/body/div/table/tbody/tr[2]/td[6]/a[2]")).click(); // Go to asset
-        $(By.xpath("/html/body/div/div[1]/div/div/a")).click(); // Create Asset
+        $(By.xpath(".//*[. = \"First Partners\"]")).click(); // Go to asset
+        $(By.xpath("//*[@class =\"glyphicon glyphicon-plus icon-white\"]")).click(); // Create Asset
         $(By.className("modal-title")).shouldHave(text("Create New Asset"));
         $(By.xpath("//*[@id=\"new_asset\"]/div[2]/div/button[1]")).click(); // Click Cancel
 
-        $(By.id("logo_image")).click();
 
     }
 
@@ -157,20 +135,20 @@ public class Sample {
         $(By.xpath("//*[@id=\"organization_31\"]/td[1]/a")).click();
         $(By.xpath("//*[@id=\"container\"]/table/tbody/tr[1]/td[1]/a")).click();  // Portfolio
 
-        $(By.xpath("/html/body/div/table/tbody/tr[2]/td[6]/a[2]")).click(); // Go to asset
-        $(By.xpath("/html/body/div/div[1]/div/div/a")).click(); // Create Asset
-        $(By.className("modal-title")).shouldHave(text("Create New Asset"));
+        $(By.xpath(".//*[. = \"First Partners\"]")).click(); // Go to asset
+        $(By.xpath("//*[@class =\"glyphicon glyphicon-plus icon-white\"]")).click(); // Create Asset
 
         $(By.id("asset_owners_name")).setValue("autotestOwnerName");
         $(By.id("asset_name")).setValue("autotestAssetName");
         $(By.xpath("//*[@id=\"new_asset\"]/div[2]/div/button[2]")).click(); // Click Save
 
-        $(By.id("logo_image")).click();
-
     }
 
 
-
+   @BeforeMethod
+   public void gotoOrganizationPage() {
+       $(By.id("logo_image")).click();
+   }
 
 
     @AfterClass

@@ -20,7 +20,7 @@ public class SetSettings implements WebDriverProvider {
         DesiredCapabilities caps  = new DesiredCapabilities();
         caps.setCapability("os", "Windows");
         caps.setCapability("os_version", "7");
-        caps.setCapability("browser", "IE");
+        caps.setCapability("browser", "Chrome");  //IE
         caps.setCapability("browser_version", "8.0");
         caps.setCapability("resolution", "1024x768");
         caps.setCapability("build", "Sample");
